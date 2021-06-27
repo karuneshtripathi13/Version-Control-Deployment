@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.progress2 {
+    position: absolute;   
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin: 60px 0 0 -550px;
+}
+.circleText{
+    padding-bottom: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.progress-circle {
+  transform: rotate(-90deg);
+	margin-top: -54px;
+}
+
+.progress-circle-back {
+	fill: none; 
+	stroke: #D2D2D2;
+	stroke-width:10px;
+}
+
+.progress-circle-prog {
+	fill: none; 
+	stroke: #2d8ab4;
+	stroke-width: 10px;  
+	stroke-dasharray: 0 999;    
+	stroke-dashoffset: 0px;
+    transition: stroke-dasharray 0.7s linear 0s;
+}
+
+.progress-text {
+	width: 100%;
+	position: absolute;
+	top: 110px;
+	text-align: center;
+	font-size: 2em;
+}
