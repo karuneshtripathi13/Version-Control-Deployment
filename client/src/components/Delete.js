@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
-const Delete = ({ idd }) => {
+const Delete = () => {
+  const idd=localStorage.getItem("idd")
   const [post, setPost] = useState([])
   const [cont, setCont] = useState("")
   const [id, setId] = useState("")

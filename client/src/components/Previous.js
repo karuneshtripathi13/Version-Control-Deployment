@@ -4,7 +4,8 @@ import { Fragment, useState } from 'react';
 import { useEffect } from 'react';
 import Versions from './Versions'
 
-const Previous = ({ idd }) => {
+const Previous = () => {
+  const idd=localStorage.getItem("idd")
   const [post, setPost] = useState([])
   const [cont, setCont] = useState("")
   const [id, setId] = useState("")

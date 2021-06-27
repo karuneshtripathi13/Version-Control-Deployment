@@ -47,12 +47,12 @@ function App() {
       <Header/>
       <MainSideNav/>
       <Route path="/login/addnew"><Upload/></Route>
-      <Route path="/login/viewprev"><View idd={localStorage.getItem("idd")}/></Route>
-      <Route path="/login/delete"><Delete idd={localStorage.getItem("idd")}/></Route>
-      <Route path="/login/edit"><Edit idd={localStorage.getItem("idd")}/></Route>
-      <Route path="/login/previous"><Previous idd={localStorage.getItem("idd")}/></Route>
+      <Route path="/login/viewprev"><View/></Route>
+      <Route path="/login/delete"><Delete/></Route>
+      <Route path="/login/edit"><Edit/></Route>
+      <Route path="/login/previous"><Previous/></Route>
       <Route path="/login/home">
-        <Home idd={localStorage.getItem("idd")}/>
+        <Home/>
       </Route>
     </Route>
     <Route path='/Tracking'><Header2/><MainSideNav/><Tracking/></Route>

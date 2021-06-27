@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Fragment, useState ,useEffect} from 'react';
 
-const View = ({ idd }) => {
+const View = () => {
+  const idd=localStorage.getItem("idd")
   const [post, setPost] = useState([])
   const [cont, setCont] = useState("")
   const [id, setId] = useState("")
