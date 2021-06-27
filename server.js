@@ -29,18 +29,11 @@ app.use(express.json())
 const fileRouter=require('./routes/file')
 app.use('/file',fileRouter)
 // step 3: Heroku 
-
- 
-
-if ( process.env.NODE_ENV == "production"){
-
-    app.use(express.static("client/build"));
-
-    const path = require("path");
-
-    app.get("*", (req, res) => {
-
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-
-    })
-app.listen( process.env.PORT ||5000,()=>console.log('Server Started...'));
+    if (process.env.NODE_ENV === "production"){
+      app.use(express.static("build"));
+      app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+      });
+    }
+const port=process.env.PORT || 5000
+app.listen( port,()=>console.log(`Server Started...${port}`));
