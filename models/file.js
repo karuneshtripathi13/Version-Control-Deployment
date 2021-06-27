@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/karu', {useNewUrlParser: true, useUnifiedTopology: true});
 const fileSchema=new mongoose.Schema({
     id: {
         type:String,

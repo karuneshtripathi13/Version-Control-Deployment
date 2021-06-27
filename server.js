@@ -14,8 +14,8 @@ const app=express();
 app.use(fileUpload());
 //MONGODB
 const mongoose = require('mongoose');
+//MONGODB_URI="mongodb+srv://karunesh:karunesh@version.5ycyd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/karu', {useNewUrlParser: true, useUnifiedTopology: true,  useFindAndModify: false});
-
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
