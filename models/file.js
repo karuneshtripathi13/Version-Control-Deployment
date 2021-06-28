@@ -13,6 +13,9 @@ const fileSchema=new mongoose.Schema({
         type:String,
         required : true
     },
+    diag:{
+        type:Object
+    },
     data:[{
         name : {
             type : String,

@@ -47,7 +47,17 @@ class WBS extends Component {
       captions: name,
     };
   }
-
+  componentDidMount() {
+      const idd=localStorage.getItem("idd")
+                var path="/file/diag/down/load/"+idd
+                fetch(path)
+                .then(response => response.json())
+                .then((data) => {if(data.diag!==undefined){this.state.diagram.fromJson(data.diag);}},
+                (error) => {
+                  console.log(error);
+                }
+                );
+  }
   render() {
     var props = {
       id: "diagram1",
@@ -63,7 +73,19 @@ class WBS extends Component {
               type="button"
               value="Save"
               onClick={() => {
-                localStorage.setItem("jsdiagram", this.state.diagram.toJson());
+                const idd=localStorage.getItem("idd")
+                const diag=this.state.diagram.toJson()
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({diag : diag})
+                };
+                var path='/file/diagup/'+idd
+                fetch(path, requestOptions)
+                    .then(response => response.json())
+                    .then(data => window.alert(data.msg));
+                    console.log("uploaded")
+                //localStorage.setItem("jsdiagram", this.state.diagram.toJson());
               }}
             />
           </div>
@@ -74,8 +96,17 @@ class WBS extends Component {
               type="button"
               value="Load"
               onClick={() => {
-                var diagramString = localStorage.getItem("jsdiagram");
-                this.state.diagram.fromJson(diagramString);
+                const idd=localStorage.getItem("idd")
+                var path="/file/diag/down/load/"+idd
+                fetch(path)
+                .then(response => response.json())
+                .then((data) => {if(data.diag!==undefined){this.state.diagram.fromJson(data.diag);}},
+                (error) => {
+                  console.log(error);
+                }
+                );
+                //var diagramString = localStorage.getItem("jsdiagram");
+                //this.state.diagram.fromJson(diagramString);
               }}
             />
           </div>

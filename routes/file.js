@@ -66,6 +66,16 @@ router.get("/path/:id/:val", async (req, res) => {
     res.json({"content":"error: "+error})
   }
 });
+router.get("/diag/down/load/:id",async(req,res)=>{
+  try {
+    const file = await FileData.findOne({id:req.params.id});
+    res.json({"diag":file.diag})
+  } catch (err) {
+    console.log("Unsuccessful"+err)
+    res.json({"content":"Error: "+error})
+  }
+})
+
 router.post("/up/:id", async (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: "No file uploaded" });
@@ -177,6 +187,23 @@ router.post('/login',async(req,res)=>{
     res.json({msg: false});
   }
 })
+router.post('/diagup/:id',async(req,res)=>{
+  try{
+    const file = await FileData.findOne({id:req.params.id});
+    console.log(file.length)
+    file.diag=req.body.diag
+    try {
+      const f1 = await file.save();
+      console.log("Saved Successfully!");
+    } catch (err) {
+      console.log("Error: " + err);
+    }
+    res.json({msg:"Saved Successfully!"});
+  }catch (err) {
+    res.json({msg: "Diagram not Saved!"});
+  }
+})
+
 router.patch("/:id", async (req, res) => {
   try {
     console.log(req.params.id)
